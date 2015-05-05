@@ -1,0 +1,73 @@
+<style>
+    .headerzone h4 {
+        font-family: 'Nunito' !important;
+        font-style: italic;
+        font-size: 24px;
+    }
+</style>
+<div>
+    <div class="row" style="margin:0;">
+        <div class="container_noap">
+            <div class="col-xs-12">
+                <?php if (isset($_SESSION['vavavoos']) && ($_SESSION['vavavoos']['isemployer'] || $_SESSION['vavavoos']['isva'])): ?>
+                    <?php echo $_SESSION['vavavoos']['displayname']; ?>
+                    <small>(<a href="<?php echo VAMENUPAGE ?>&menu=thanks">log off</a>)</small>
+                <?php else: ?>
+                    <small>(<a href="<?php echo VAMENUPAGE . "&menu=managesignon" ?>">log in</a>)</small>
+                <?php endif; ?>
+                <div style="float:right">
+                    <img src="<?php echo VAVAVOOS_PLUGINURL ?>assets/img/shortlogo.png"
+                         style="height: 31px;vertical-align: top;">
+                </div>
+            </div>
+            <br/><br/>
+
+            <p id="va-content">
+
+            </p>
+            <hr>
+            <footer>
+                <p>
+
+                    <a href="http://vavavoos.com">&copy; 2014 - <?php echo date('Y') ?>
+                        Vavavoos. All rights reserved.
+                    </a>
+                </p>
+            </footer>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function varefresh(view, currentmenu) {
+        jQuery.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+            options.crossDomain = {
+                crossDomain: true
+            };
+            options.xhrFields = {
+                withCredentials: true
+            };
+        });
+
+        jQuery.ajax({
+            url: '<?php echo VABASEURL."getview"?>',
+            type: 'POST',
+            data: {view: view, wpmenu: currentmenu, va: '<?php echo json_encode($VA);?>'},
+            success: function (data) {
+
+                jQuery('#va-content').html(data);
+
+                jQuery('.timepicker').datetimepicker({
+                    format: 'LT'
+                    //pickDate: false
+                });
+
+                jQuery('.datepicker').datetimepicker({
+                    // pickTime: false
+                    format: 'D/MM/YYYY'
+                });
+            }
+        });
+    }
+</script>

@@ -1,0 +1,36 @@
+=== VAVAVOOS - Wordpress Expert ===
+Contributors: vavavoos
+Donate link: Vavavoos.com
+Tags: wpexpert,wordpress expert,vavavoos
+Requires at least: Version 4.1.1
+Tested up to: Version 4.1.1
+Stable tag: 1.0
+License: license
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+
+A plugin that helps employeers to connect with wordpress freelancers.
+
+== Description ==
+VAVAVOOS is a service plugin for WordPress which connects freelance designers, coders, content authors & SEO experts with website owners. The workflow assistance simplifies the process of managing a WordPress website by capturing and securely providing access to WordPress sites for a duration of a task, after which a supplier is paid for their activities.
+
+== Installation ==
+1. Upload Wordpress Expert Plugin to "/wp-content/plugins/" directory.
+2. Activate the plugin through the "Plugins" menu in WordPress.
+3. Congrats!! Its done.
+
+== Frequently Asked Questions ==
+ 
+There are no FAQ just yet.
+
+== Screenshots ==
+1. Search and Filter all wordress experts.
+2. Post a new wordpress job.
+3. List of all jobs with job details.
+
+== Changelog ==
+N/A
+
+== Upgrade Notice ==
+N/A

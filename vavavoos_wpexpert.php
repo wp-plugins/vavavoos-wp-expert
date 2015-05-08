@@ -26,5 +26,5 @@ function vavavoos_plugin_menu()
 {
     add_menu_page("Find WP Experts", "Find WP Experts", "manage_options", "Virtual_Assistant", vavavoos_plugin_page);
     add_submenu_page("Virtual_Assistant", "Manage My Expert/s", "Manage My Expert/s", "manage_options", "Manage_Assistant", vavavoos_pluginmanageassistant_page);
-    add_submenu_page("Virtual_Assistant", "Manage WP Access", "Manage WP Access", "manage_options", "permission", vavavoos_permission_page);
+    add_submenu_page("Virtual_Assistant", "Manage WP Access", "Temporary Access Rights Admin", "manage_options", "permission", vavavoos_permission_page);
 }

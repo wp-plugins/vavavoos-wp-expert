@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-define(VAORIGIN, 'http://app.vavavoos.com');
+define(VAORIGIN, 'http://va');
 define(VABASEURL, VAORIGIN . '/app/index/');
 define(VAVAVOOS_PLUGINURL, plugin_dir_url(__FILE__));
 define(VAMENUPAGE, admin_url() . 'admin.php?page=Virtual_Assistant');
@@ -23,6 +23,8 @@ if(isset($_GET['menu'])){
         unset($_SESSION['vavavoos']);
     }
 }
+
+
 
 $VA = isset($_SESSION['vavavoos'])?$_SESSION['vavavoos']:array();
 

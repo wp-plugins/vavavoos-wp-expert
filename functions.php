@@ -24,16 +24,55 @@ function vavavoos_setupJPermissions()
                 success: function (msg) {
                     jQuery.each(msg.data, function (e, user) {
                         Request_syn_cb("action=checkpermission&email=" + user.email, function (e) {
-                            jQuery(".tablepermissions").append("<tr><td>" + user.email + "</td><td>" + e + "</td><td><a class='makeadmin'>Make Admin</a>");
+                            var response = jQuery.parseJSON(e);
+                            var isenable = response.data != null ? 'CHECKED' : '';
+                            var isdisable = response.data == null ? 'CHECKED' : '';
+
+                            var row = "<tr data-email='" + user.email + "'>";
+
+                            row += "<td>" + user.jobtitle + "</td>";
+                            row += "<td>" + user.firstname + " " + user.lastname + "</td>";
+                            row += "<td>" + user.datecreated + "</td>";
+                            row += "<td></td>";
+                            row += "<td></td>";
+                            row += "<td>On <input type='radio' name='state_" + user.guid + "' class='switchstate on' value='enable' " + isenable + "/> / Off <input type='radio' name='state_" + user.guid + "' class='switchstate off' value='disable' " + isdisable + "/></td>";
+                            row += '</tr>';
+
+                            jQuery(".tablepermissions").append(row);
+
                         });
 
                     });
 
-                    jQuery(document).on("click", ".makeadmin", function (e) {
-                        email = jQuery(this).parents("tr").find("td:eq(0)").text();
-                        Request_syn_cb("action=makeadmin&email=" + email, function (e) {
-                            window.location.reload();
-                        });
+                    jQuery(document).on('click', ".switchstate", function () {
+                        var state = jQuery(this).val();
+                        email = jQuery(this).closest('tr').data('email');
+                        if (state == 'enable') {
+                            Request_syn_cb("action=makeadmin&email=" + email, function (e) {
+                                var response = jQuery.parseJSON(e);
+                                jQuery.ajax({
+                                    url: '<?php echo VABASEURL."sendmail"?>',
+                                    type: 'POST',
+                                    data: response,
+                                    success: function (data) {
+                                        window.location.reload();
+                                    }
+                                });
+                            });
+                        } else {
+                            Request_syn_cb("action=makeadmin&state=disable&email=" + email, function (e) {
+                                var response = jQuery.parseJSON(e);
+                                jQuery.ajax({
+                                    url: '<?php echo VABASEURL."sendmail"?>',
+                                    type: 'POST',
+                                    data: response,
+                                    success: function (data) {
+                                        window.location.reload();
+                                    }
+                                });
+                            });
+                        }
+
                     });
                 }
             });
@@ -66,15 +105,51 @@ function vavavoos_setupJPermissions()
  */
 function vavavoos_makeadmin()
 {
-    $user_email = vavavoos_clean_param($_POST["email"]);
-    if (email_exists($user_email) == false) {
-        $random_password = wp_generate_password($length = 12, $include_standard_special_chars = false);
-        $user_id = wp_create_user(split("@", $user_email)[0], $random_password, $user_email);
-        wp_update_user(array('ID' => $user_id, 'role' => "administrator"));
-    } else {
+    $user_email = sanitize_email($_POST["email"]);
+    $state = isset($_POST['state']) ? vavavoos_clean_param($_POST['state']) : 'enable';
+    $email = array();
+    if ($state == 'disable') {
         $user = get_user_by("email", $user_email);
-        wp_update_user(array('ID' => $user->ID, 'role' => "administrator"));
+        wp_delete_user($user->ID);
+        $email = array(
+            'email' => $user_email,
+            'subject' => 'Temporary Access Rights (TAR) have been disabled',
+            'content' => "Thank you for using VAVAVOOS - Temporary Access Rights (TAR) have now been closed and can not be used to access the {$_SERVER["HTTP_HOST"]}website further<br>
+            Thanks, <br>
+            The VAVAVOOS team",
+        );
+
+    } else {
+        $credential = '';
+        if (email_exists($user_email)) {
+            $user = get_user_by("email", $user_email);
+            wp_update_user(array('ID' => $user->ID, 'role' => "administrator"));
+            $credential = "Please use the previous credential you have";
+        } else {
+            $random_password = wp_generate_password($length = 12, $include_standard_special_chars = false);
+            $username = split("@", $user_email)[0];
+            $user_id = wp_create_user($username, $random_password, $user_email);
+
+            wp_update_user(array('ID' => $user_id, 'role' => "administrator"));
+            $credential = "Username: $username <br> Password: $random_password <br>";
+        }
+        $email = array(
+            'email' => $user_email,
+            'subject' => 'Temporary Access Rights (TAR) have been enabled via VAVAVOOS',
+            'content' => "Please find you TAR login details for project: {$_SERVER["HTTP_HOST"]}<br>
+                <p>
+                {$credential}
+                </p><br>
+                <p>
+                 These details will be active for the duration of the work you have been asked to perform or until the client removes access
+                 </p>
+                 <br>
+                 Thanks, <br>
+                 The VAVAVOOS team",
+        );
     }
+
+    echo json_encode($email);
     wp_die();
 }
 
@@ -83,13 +158,12 @@ function vavavoos_makeadmin()
  */
 function vavavoos_checkpermission()
 {
-    $email = vavavoos_clean_param($_POST["email"]);
+    $email = sanitize_email($_POST["email"]);
     if (email_exists($email) == true) {
         $user = get_user_by("email", $email);
-        echo $user->roles[0];
-
+        echo json_encode(array('data' => $user));
     } else {
-        echo "non";
+        echo json_encode(array('data' => null));
     }
     wp_die();
 }
@@ -121,9 +195,12 @@ function vavavoos_permission_page()
     ?>
     <table class="tablepermissions wp-list-table widefat fixed ">
         <tr>
-            <td>Email Address</td>
-            <td>Current Permission</td>
-            <td>Action</td>
+            <td>Project Name</td>
+            <td>Expert Name</td>
+            <td>Date Started</td>
+            <td>Date TAR Used</td>
+            <td>Date Signed Off</td>
+            <td>TAR State</td>
         </tr>
     </table>
 

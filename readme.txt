@@ -31,9 +31,9 @@ There are no FAQ just yet.
 
 == Changelog ==
 Version 0.0.2
-1. Temporary Access Rights (TAR) Page
-2. Pre Loader
-3. Layout Changes
+1. Temporary Access Rights (TAR) Page.
+2. Pre Loader.
+3. Layout Changes.
 
 == Upgrade Notice ==
 N/A

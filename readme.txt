@@ -4,7 +4,7 @@ Donate link: Vavavoos.com
 Tags: wpexpert,wordpress expert,vavavoos
 Requires at least: Version 4.1.1
 Tested up to: Version 4.1.1
-Stable tag: 0.0.2
+Stable tag: 0.0.3
 License: license
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -30,10 +30,13 @@ There are no FAQ just yet.
 3. List of all jobs with job details.
 
 == Changelog ==
-Version 0.0.2
-1. Temporary Access Rights (TAR) Page.
-2. Pre Loader.
-3. Layout Changes.
+= Version 0.0.3 =
+*Pre Loader
+
+= Version 0.0.2 =
+*Temporary Access Rights (TAR) Page,
+*Pre Loader,
+*Layout Changes
 
 == Upgrade Notice ==
 N/A

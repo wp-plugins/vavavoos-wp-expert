@@ -8,7 +8,7 @@
 <div>
     <div class="row" style="margin:0;">
         <div class="container_noap">
-            <div class="col-xs-12">
+            <div class="col-xs-12 vavavoos-header" style="display:none">
                 <?php if (isset($_SESSION['vavavoos']) && ($_SESSION['vavavoos']['isemployer'] || $_SESSION['vavavoos']['isva'])): ?>
                     <?php echo $_SESSION['vavavoos']['displayname']; ?>
                     <small>(<a href="<?php echo VAMENUPAGE ?>&menu=thanks">log off</a>)</small>
@@ -24,6 +24,13 @@
 
             <p id="va-content">
 
+            <div style="margin-top:40px;text-align: center">
+                <img src="<?php echo VAVAVOOS_PLUGINURL ?>assets/img/loader.gif"/>
+
+                <div style="margin-top:20px;">
+                    <img src="<?php echo VAVAVOOS_PLUGINURL ?>assets/img/shortlogo.png" style="height: 31px;">
+                </div>
+            </div>
             </p>
             <hr>
             <footer>
@@ -50,13 +57,13 @@
                 withCredentials: true
             };
         });
-        jQuery('#va-content').html('<div class="text-center"><h3>Loading Contents...</h3></div>');
         jQuery.ajax({
             url: '<?php echo VABASEURL."getview"?>',
             type: 'POST',
             data: {view: view, wpmenu: currentmenu, va: '<?php echo json_encode($VA);?>'},
             success: function (data) {
 
+                jQuery('.vavavoos-header').fadeIn();
                 jQuery('#va-content').html(data);
 
                 jQuery('.timepicker').datetimepicker({

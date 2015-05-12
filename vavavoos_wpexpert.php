@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: vaplugin
+ * Plugin Name: vavavoos-wpexpert
  * Plugin URI: http://vavavoos.com
  * Description: Find your virtual assistant to help you out with all your WP Needs
- * Version: 0.0.1
+ * Version: 0.0.3
  * Author: Scott Underhill
  * Author URI: http://vavavoos.com
  * Network: true

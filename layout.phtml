@@ -50,7 +50,7 @@
                 withCredentials: true
             };
         });
-
+        jQuery('#va-content').html('<div class="text-center"><h3>Loading Contents...</h3></div>');
         jQuery.ajax({
             url: '<?php echo VABASEURL."getview"?>',
             type: 'POST',

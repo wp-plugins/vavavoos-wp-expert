@@ -174,7 +174,7 @@ function vavavoos_checkpermission()
 function vavavoos_plugin_page()
 {
     ?>
-    <div class="">
+    <div style="margin-top:20px">
         <?php include('layout.phtml');?>
     </div>
     <script type="text/javascript">

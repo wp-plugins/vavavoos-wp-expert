@@ -8,16 +8,21 @@
 <div>
     <div class="row" style="margin:0;">
         <div class="container_noap">
-            <div class="col-xs-12 vavavoos-header" style="display:none">
-                <?php if (isset($_SESSION['vavavoos']) && ($_SESSION['vavavoos']['isemployer'] || $_SESSION['vavavoos']['isva'])): ?>
-                    <?php echo $_SESSION['vavavoos']['displayname']; ?>
-                    <small>(<a href="<?php echo VAMENUPAGE ?>&menu=thanks">log off</a>)</small>
-                <?php else: ?>
-                    <small>(<a href="<?php echo VAMENUPAGE . "&menu=managesignon" ?>">log in</a>)</small>
-                <?php endif; ?>
-                <div style="float:right">
-                    <img src="<?php echo VAVAVOOS_PLUGINURL ?>assets/img/shortlogo.png"
-                         style="height: 31px;vertical-align: top;">
+            <div class="row">
+                <div class="col-xs-12 vavavoos-header" style="display:none">
+                    <?php if (isset($_SESSION['vavavoos']) && ($_SESSION['vavavoos']['isemployer'] || $_SESSION['vavavoos']['isva'])): ?>
+                        <?php echo $_SESSION['vavavoos']['displayname']; ?>
+                        <a href="<?php echo VAMENUPAGE ?>&menu=thanks" class="btn defaultbutton btn-sm">Log off</a>
+                    <?php else: ?>
+                        <?php if (vavavoos_clean_param($_GET['menu']) != 'managesignon'): ?>
+                            <a href="<?php echo VAMENUPAGE . "&menu=managesignon" ?>" class="btn greenbutton">Log in</a>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <div
+                        style="<?php if (vavavoos_clean_param($_GET['menu']) != 'managesignon'): ?>float:right<?php endif; ?>">
+                        <img src="<?php echo VAVAVOOS_PLUGINURL ?>assets/img/shortlogo.png"
+                             style="vertical-align: top;">
+                    </div>
                 </div>
             </div>
             <br/><br/>

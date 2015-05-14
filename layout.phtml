@@ -10,14 +10,17 @@
         <div class="container_noap">
             <div class="row">
                 <div class="col-xs-12 vavavoos-header" style="display:none">
-                    <?php if (isset($_SESSION['vavavoos']) && ($_SESSION['vavavoos']['isemployer'] || $_SESSION['vavavoos']['isva'])): ?>
-                        <?php echo $_SESSION['vavavoos']['displayname']; ?>
-                        <a href="<?php echo VAMENUPAGE ?>&menu=thanks" class="btn defaultbutton btn-sm">Log off</a>
-                    <?php else: ?>
-                        <?php if (vavavoos_clean_param($_GET['menu']) != 'managesignon'): ?>
-                            <a href="<?php echo VAMENUPAGE . "&menu=managesignon" ?>" class="btn greenbutton">Log in</a>
+                    <div class="vavavoos-user pull-left" style="margin-top: 27px;">
+                        <?php if (isset($_SESSION['vavavoos']) && ($_SESSION['vavavoos']['isemployer'] || $_SESSION['vavavoos']['isva'])): ?>
+                            LOGGED IN AS: <?php echo $_SESSION['vavavoos']['displayname']; ?>
+                            <a href="<?php echo VAMENUPAGE ?>&menu=thanks" class="btn defaultbutton btn-sm">Log off</a>
+                        <?php else: ?>
+                            <?php if (vavavoos_clean_param($_GET['menu']) != 'managesignon'): ?>
+                                <a href="<?php echo VAMENUPAGE . "&menu=managesignon" ?>" class="btn greenbutton">Log
+                                    in</a>
+                            <?php endif; ?>
                         <?php endif; ?>
-                    <?php endif; ?>
+                    </div>
                     <div
                         style="<?php if (vavavoos_clean_param($_GET['menu']) != 'managesignon'): ?>float:right<?php endif; ?>">
                         <img src="<?php echo VAVAVOOS_PLUGINURL ?>assets/img/shortlogo.png"

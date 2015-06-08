@@ -1,0 +1,104 @@
+.hightlight {
+    color: rgb(22, 160, 133);
+}
+
+.fixies-attachments {
+    border-left: 1px solid #eee;
+}
+
+.fixies-attachment-list li {
+    list-style: none;
+}
+
+.fixies-hightlight {
+    color: rgb(22, 160, 133);
+}
+
+.side-border {
+    border-top: 1px solid #16A085;
+    margin-top: 24px;
+}
+
+.fixie_rating {
+    float: left;
+}
+
+.fixie_rating span {
+    float: right;
+    position: relative;
+}
+
+.fixie_rating span input {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+}
+
+.fixie_rating span label {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: #ccc;
+    font-size: 30px;
+    margin-right: 2px;
+    line-height: 30px;
+}
+
+.fixie_rating span:hover ~ span label,
+.fixie_rating span:hover label,
+.fixie_rating span.checked label,
+.fixie_rating span.checked ~ span label {
+    color: #F90 !important;;
+}
+.fixie_rating input[type=radio]:checked+label:before{
+    color: #F90 !important;
+}
+
+.thumbnail, .btn, .panel, .panel-heading, .well, .alert, .modal-content {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.thumbnail, .panel {
+    border: none !important;
+}
+
+.panel-default > .panel-heading {
+    background-color: #D7D7D7 !important;
+}
+
+.requirements-heading {
+    background: #16A085 !important;
+    color: #fff !important;;
+}
+
+.order-main-heading {
+    background: #434343 !important;
+    color: #fff !important;
+
+}
+
+.fixie-table td {
+    border: none !important;
+    border-top: 1px solid #eee !important;
+}
+
+.fixie-table tr:nth-child(1) td {
+    border: none !important;
+}
+
+.changeprofilepic img:hover {
+    border: 2px solid rgb(22, 160, 133);
+    cursor: pointer;
+}
+
+.upgrade-list {
+    margin-top: 10px;
+}
+
+.fixie-upgrades {
+    border-top: 1px solid #ccc;
+}

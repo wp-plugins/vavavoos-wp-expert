@@ -433,11 +433,12 @@ function MD5(string) {
     return temp.toLowerCase();
 }
 
-function setCurrentUrl(currenturl,menu,params){
+function setCurrentUrl(currenturl,menu,params,menuprefix){
     params = typeof params == 'undefined'?{}:params;
+    menuprefix = typeof menuprefix == 'undefined'?'':menuprefix;
     var http_params = typeof(params) == 'string'?params:jQuery.param(params);
     if(currenturl==''){
         return menu+((http_params == '')?"":('?'+http_params));
     }
-    return currenturl+'&menu='+menu+((http_params == '')?"":('&'+http_params));
+    return currenturl+'&'+menuprefix+'menu='+menu+((http_params == '')?"":('&'+http_params));;
 }

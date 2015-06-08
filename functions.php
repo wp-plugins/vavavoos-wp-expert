@@ -181,6 +181,7 @@ function vavavoos_plugin_page()
         jQuery(document).ready(function () {
             <?php
             $action = isset($_GET['menu'])?(vavavoos_clean_param($_GET['menu'])):'start';
+            $action = isset($_GET['fixiemenu'])?(vavavoos_clean_param($_GET['fixiemenu'])):$action;
             ?>
             varefresh('<?php echo $action;?>', '<?php echo VAMENUPAGE;?>');
         });
@@ -302,6 +303,7 @@ function vavavoos_init_styles()
     wp_enqueue_style('wpe_fontawesome', VAVAVOOS_PLUGINURL . 'assets/css/font-awesome.min.css');
     wp_enqueue_style('wpe_bootstrapdatepicker', VAVAVOOS_PLUGINURL . 'assets/css/bootstrap-datetimepicker.min.css', array(), false, 'screen');
     wp_enqueue_style('wpe_customdesign', VAVAVOOS_PLUGINURL . 'assets/css/design.css');
+    wp_enqueue_style('wpe_fixies', VAVAVOOS_PLUGINURL . 'assets/css/fixies.css');
 }
 
 /**

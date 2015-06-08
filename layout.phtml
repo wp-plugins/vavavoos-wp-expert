@@ -14,16 +14,36 @@
                         <?php if (isset($_SESSION['vavavoos']) && ($_SESSION['vavavoos']['isemployer'] || $_SESSION['vavavoos']['isva'])): ?>
                             LOGGED IN AS: <?php echo $_SESSION['vavavoos']['displayname']; ?>
                             <a href="<?php echo VAMENUPAGE ?>&menu=thanks" class="btn defaultbutton btn-sm">Log off</a>
+                            |
+                            <a href="<?php echo VAMENUPAGE ?>&fixiemenu=empmanagefixies">My Orders</a>
+
                         <?php else: ?>
                             <?php if (vavavoos_clean_param($_GET['menu']) != 'managesignon'): ?>
-                                <a href="<?php echo VAMENUPAGE . "&menu=managesignon" ?>" class="btn greenbutton">Log
-                                    in</a>
+                                <a href="<?php echo VAMENUPAGE . "&menu=managesignon" ?>" class="btn greenbutton">
+                                    Log in
+                                </a>
                             <?php endif; ?>
+
+                        <?php endif; ?>
+                        <?php if (vavavoos_clean_param($_GET['menu']) != 'managesignon'): ?>
+                            |
+                            <a href="<?php echo VAMENUPAGE . "&fixiemenu=findfixies" ?>">
+                                Search Fixies
+                            </a>
+                        <?php endif; ?>
+                        <?php if (isset($_GET['fixiemenu'])): ?>
+                            |
+                            <a href="<?php echo VAMENUPAGE . "&menu=start" ?>">
+                                Search Experts
+                            </a>
                         <?php endif; ?>
                     </div>
                     <div
                         style="<?php if (vavavoos_clean_param($_GET['menu']) != 'managesignon'): ?>float:right<?php endif; ?>">
-                        <img src="<?php echo VAVAVOOS_PLUGINURL ?>assets/img/shortlogo.png"
+                        <?php
+                        $logo = isset($_GET['fixiemenu']) ? 'fixiesonvavavoos.png' : 'shortlogo.png';
+                        ?>
+                        <img src="<?php echo VAVAVOOS_PLUGINURL ?>assets/img/<?php echo $logo ?>"
                              style="vertical-align: top;">
                     </div>
                 </div>
@@ -55,6 +75,23 @@
 
 <script type="text/javascript">
     vabaseurl = '<?php echo VABASEURL;?>';
+    vafixiesbaseurl = '<?php echo VAFIXIESBASEURL;?>';
+    loadcontent = function (data) {
+
+        jQuery('.vavavoos-header').fadeIn();
+        jQuery('#va-content').html(data);
+
+        jQuery('.timepicker').datetimepicker({
+            format: 'LT'
+            //pickDate: false
+        });
+
+        jQuery('.datepicker').datetimepicker({
+            // pickTime: false
+            format: 'D/MM/YYYY'
+        });
+    };
+
     function varefresh(view, currentmenu) {
         jQuery.ajaxPrefilter(function (options, originalOptions, jqXHR) {
             options.crossDomain = {
@@ -64,25 +101,24 @@
                 withCredentials: true
             };
         });
+        <?php
+         if(isset($_GET['fixiemenu'])):
+            global $uriid;
+            $search = isset($_GET['s'])?'?s='.vavavoos_clean_param($_GET['s']):'';
+        ?>
+        jQuery.ajax({
+            url: '<?php echo VAFIXIESBASEURL."getview$search"?>',
+            type: 'POST',
+            data: {view: view, wpmenu: currentmenu, uriid: '<?php echo $uriid?>'},
+            success: loadcontent
+        });
+        <?php else:?>
         jQuery.ajax({
             url: '<?php echo VABASEURL."getview"?>',
             type: 'POST',
             data: {view: view, wpmenu: currentmenu, va: '<?php echo json_encode($VA);?>'},
-            success: function (data) {
-
-                jQuery('.vavavoos-header').fadeIn();
-                jQuery('#va-content').html(data);
-
-                jQuery('.timepicker').datetimepicker({
-                    format: 'LT'
-                    //pickDate: false
-                });
-
-                jQuery('.datepicker').datetimepicker({
-                    // pickTime: false
-                    format: 'D/MM/YYYY'
-                });
-            }
+            success: loadcontent
         });
+        <?php endif;?>
     }
 </script>

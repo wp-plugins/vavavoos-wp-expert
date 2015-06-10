@@ -1,0 +1,207 @@
+body {
+    font-family: lato;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: lato;
+}
+
+.navheight {
+    height: 40px;
+    background-color: #BDBCBC;
+    color: black;
+}
+
+.navheightselected {
+    height: 55px;
+    background-color: #D7D7D7;
+    color: black;
+}
+
+.wrap {
+    position: relative;
+    overflow: hidden;
+    /* width: 100%; */
+    margin: 0 auto;
+
+}
+
+.wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.wrap:before, .wrap:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    background-color: #F4F4F4;
+    /*padding-bottom:1.5%;*/
+    padding-bottom: 15px;
+
+}
+
+.wrap:before {
+    right: 50%;
+    -ms-transform-origin: 100% 100%;
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+    -ms-transform: skewX(45deg);
+    -webkit-transform: skewX(45deg);
+    transform: skewX(45deg);
+}
+
+.wrap:after {
+    left: 50%;
+    -ms-transform-origin: 0 100%;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -ms-transform: skewX(-45deg);
+    -webkit-transform: skewX(-45deg);
+    transform: skewX(-45deg);
+}
+
+.wrap h1 {
+    color: white;
+}
+
+.navigation {
+    text-align: center;
+    line-height: 40px;
+    font-family: Lato !important;
+    font-weight: 800;
+    font-size: 14px !important;
+    cursor: pointer;
+}
+
+.navigation .navheight.search {
+    font-size: 14px !important;
+}
+
+.navigation > div {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.bigheading {
+    font-size: 40px;
+    font-family: Lato !important;
+    font-weight: 800;
+    display: inline-block;
+    margin: 20px;
+    padding: 20px;
+    background-color: black;
+    color: white
+}
+
+.bigheadingfixes {
+    font-size: 40px;
+    font-family: Lato !important;
+    font-weight: 800;
+    display: inline-block;
+    margin: 20px;
+    padding: 20px;
+    color: white
+}
+
+.rowheading {
+    height: 150px;
+    background-size: cover;
+    background-image: url('http://vavavoos.com/wp-content/uploads/2015/04/topimage.png')
+}
+
+.fixesheading {
+    background-image: url('http://vavavoos.com/wp-content/uploads/2014/06/tumblr_muui0tANw31st5lhmo1_1280.jpg') !important;
+}
+
+.navheightselected > div {
+    background-color: #D7D7D7;
+    width: 100%;
+    color: black;
+    height: 100% cursor : hand;
+}
+
+.backgroundgreen {
+    background-color: #16a085;
+
+}
+
+.backgroundgreen a {
+    color: white;
+}
+
+a.backgroundgreen {
+    background-color: #16a085;
+    color: white !important;
+}
+
+.greenbutton {
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    border-color: rgb(22, 160, 133);
+    color: rgb(255, 255, 255);
+    background-color: rgb(22, 160, 133);
+    font-family: Lato;
+
+    font-weight: bold;
+}
+
+.infobutton {
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    border-color: #2aabd2;
+    color: rgb(255, 255, 255);
+    background-color: #2aabd2;
+    font-family: Lato;
+    font-weight: bold;
+}
+
+.warningbutton {
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    border-color: #eb9316;
+    color: rgb(255, 255, 255);
+    background-color: #eb9316;
+    font-family: Lato;
+    font-weight: bold;
+}
+
+.dangerbutton {
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    border-color: #c12e2a;
+    color: rgb(255, 255, 255);
+    background-color: #c12e2a;
+    font-family: Lato;
+    font-weight: bold;
+}
+
+.defaultbutton {
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    border-color: #e0e0e0;
+    color: rgb(255, 255, 255);
+    background-color: #e0e0e0;
+    font-family: Lato;
+    font-weight: bold;
+}
+
+/*********  PANEL HEADING COLORS *************/
+.jobwaiting {
+    background-color: pink;
+}
+
+.jobhired {
+    background-color: lightgreen;
+}
+
+.jobopen {
+    background-color: lightyellow;
+}
+
+.btn-black {
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    border-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    font-family: Lato;
+
+    font-weight: bold;
+}

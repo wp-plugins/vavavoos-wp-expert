@@ -14,9 +14,6 @@
                         <?php if (isset($_SESSION['vavavoos']) && ($_SESSION['vavavoos']['isemployer'] || $_SESSION['vavavoos']['isva'])): ?>
                             LOGGED IN AS: <?php echo $_SESSION['vavavoos']['displayname']; ?>
                             <a href="<?php echo VAMENUPAGE ?>&menu=thanks" class="btn defaultbutton btn-sm">Log off</a>
-                            |
-                            <a href="<?php echo VAMENUPAGE ?>&fixiemenu=empmanagefixies">My Orders</a>
-
                         <?php else: ?>
                             <?php if (vavavoos_clean_param($_GET['menu']) != 'managesignon'): ?>
                                 <a href="<?php echo VAMENUPAGE . "&menu=managesignon" ?>" class="btn greenbutton">
@@ -24,18 +21,6 @@
                                 </a>
                             <?php endif; ?>
 
-                        <?php endif; ?>
-                        <?php if (vavavoos_clean_param($_GET['menu']) != 'managesignon'): ?>
-                            |
-                            <a href="<?php echo VAMENUPAGE . "&fixiemenu=findfixies" ?>">
-                                Search Fixies
-                            </a>
-                        <?php endif; ?>
-                        <?php if (isset($_GET['fixiemenu'])): ?>
-                            |
-                            <a href="<?php echo VAMENUPAGE . "&menu=start" ?>">
-                                Search Experts
-                            </a>
                         <?php endif; ?>
                     </div>
                     <div

@@ -3,7 +3,7 @@
  * Plugin Name: vaplugin
  * Plugin URI: http://vavavoos.com
  * Description: Find your virtual assistant to help you out with all your WP Needs
- * Version: 0.0.7
+ * Version: 0.0.8
  * Author: Scott Underhill
  * Author URI: http://vavavoos.com
  * Network: true

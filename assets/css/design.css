@@ -1,18 +1,21 @@
-body{
+body {
     font-family: lato;
 }
-h1,h2,h3,h4,h5,h6{
+
+h1, h2, h3, h4, h5, h6 {
     font-family: lato;
 }
-.navheight{
-    height:40px;
-    background-color:#BDBCBC;
-    color:black;
+
+.navheight {
+    height: 40px;
+    background-color: #BDBCBC;
+    color: black;
 }
-.navheightselected{
-    height:55px;
+
+.navheightselected {
+    height: 55px;
     background-color: #D7D7D7;
-    color:black;
+    color: black;
 }
 
 .wrap {
@@ -22,13 +25,15 @@ h1,h2,h3,h4,h5,h6{
     margin: 0 auto;
 
 }
+
 .wrap img {
     width: 100%;
     height: auto;
     display: block;
 }
+
 .wrap:before, .wrap:after {
-    content:'';
+    content: '';
     position: absolute;
     bottom: 0;
     width: 50%;
@@ -37,6 +42,7 @@ h1,h2,h3,h4,h5,h6{
     padding-bottom: 15px;
 
 }
+
 .wrap:before {
     right: 50%;
     -ms-transform-origin: 100% 100%;
@@ -46,6 +52,7 @@ h1,h2,h3,h4,h5,h6{
     -webkit-transform: skewX(45deg);
     transform: skewX(45deg);
 }
+
 .wrap:after {
     left: 50%;
     -ms-transform-origin: 0 100%;
@@ -55,74 +62,82 @@ h1,h2,h3,h4,h5,h6{
     -webkit-transform: skewX(-45deg);
     transform: skewX(-45deg);
 }
-.wrap h1{
+
+.wrap h1 {
     color: white;
 }
-.navigation{
+
+.navigation {
     text-align: center;
-    line-height:40px;
+    line-height: 40px;
     font-family: Lato !important;
     font-weight: 800;
-    font-size: 18px;
+    font-size: 14px !important;
     cursor: pointer;
 }
-.navigation > div{
+
+.navigation .navheight.search {
+    font-size: 14px !important;
+}
+
+.navigation > div {
     padding-left: 0px;
     padding-right: 0px;
 }
-.bigheading
-{
+
+.bigheading {
     font-size: 40px;
     font-family: Lato !important;
     font-weight: 800;
     display: inline-block;
-    margin:20px;
-    padding:20px;
+    margin: 20px;
+    padding: 20px;
     background-color: black;
-    color:white
-}
-.bigheadingfixes{
-    font-size: 40px;
-    font-family: Lato !important;
-    font-weight: 800;
-    display: inline-block;
-    margin:20px;
-    padding:20px;
-    color:white
+    color: white
 }
 
-.rowheading{
-    height:150px;
+.bigheadingfixes {
+    font-size: 40px;
+    font-family: Lato !important;
+    font-weight: 800;
+    display: inline-block;
+    margin: 20px;
+    padding: 20px;
+    color: white
+}
+
+.rowheading {
+    height: 150px;
     background-size: cover;
     background-image: url('http://vavavoos.com/wp-content/uploads/2015/04/topimage.png')
 }
 
-.fixesheading{
+.fixesheading {
     background-image: url('http://vavavoos.com/wp-content/uploads/2014/06/tumblr_muui0tANw31st5lhmo1_1280.jpg') !important;
 }
 
-.navheightselected > div{
+.navheightselected > div {
     background-color: #D7D7D7;
-    width:100%;
-    color:black;
-    height:100%
-    cursor: hand;
+    width: 100%;
+    color: black;
+    height: 100% cursor : hand;
 }
 
-.backgroundgreen{
+.backgroundgreen {
     background-color: #16a085;
 
-
 }
-.backgroundgreen a{
+
+.backgroundgreen a {
     color: white;
 }
+
 a.backgroundgreen {
     background-color: #16a085;
     color: white !important;
 }
 
-.greenbutton{
+.greenbutton {
     box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
     border-color: rgb(22, 160, 133);
     color: rgb(255, 255, 255);
@@ -132,8 +147,7 @@ a.backgroundgreen {
     font-weight: bold;
 }
 
-
-.infobutton{
+.infobutton {
     box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
     border-color: #2aabd2;
     color: rgb(255, 255, 255);
@@ -142,7 +156,7 @@ a.backgroundgreen {
     font-weight: bold;
 }
 
-.warningbutton{
+.warningbutton {
     box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
     border-color: #eb9316;
     color: rgb(255, 255, 255);
@@ -151,7 +165,7 @@ a.backgroundgreen {
     font-weight: bold;
 }
 
-.dangerbutton{
+.dangerbutton {
     box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
     border-color: #c12e2a;
     color: rgb(255, 255, 255);
@@ -160,7 +174,7 @@ a.backgroundgreen {
     font-weight: bold;
 }
 
-.defaultbutton{
+.defaultbutton {
     box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
     border-color: #e0e0e0;
     color: rgb(255, 255, 255);
@@ -169,18 +183,20 @@ a.backgroundgreen {
     font-weight: bold;
 }
 
-
 /*********  PANEL HEADING COLORS *************/
-.jobwaiting{
+.jobwaiting {
     background-color: pink;
 }
-.jobhired{
+
+.jobhired {
     background-color: lightgreen;
 }
-.jobopen{
+
+.jobopen {
     background-color: lightyellow;
 }
-.btn-black{
+
+.btn-black {
     box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
     border-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);

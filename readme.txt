@@ -4,7 +4,7 @@ Donate link: Vavavoos.com
 Tags: wpexpert,wordpress expert,vavavoos
 Requires at least: Version 4.1.1
 Tested up to: Version 4.1.1
-Stable tag: 0.0.8
+Stable tag: 0.0.9
 License: license
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -30,6 +30,9 @@ There are no FAQ just yet.
 3. List of all jobs with job details.
 
 == Changelog ==
+
+= Version 0.0.9 =
+* CSRF security implementation
 
 = Version 0.0.8 =
 * Navigation Changes

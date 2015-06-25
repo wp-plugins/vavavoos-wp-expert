@@ -57,6 +57,12 @@ function Request_asyn_cb(datarequest, functioncommand) {
     jQuery.ajax({
         type: "POST",
         data: datarequest,
+        beforeSend: function(xhr, s) {
+            var token = jQuery('[name="security_token"]').val();
+            if(token){
+                s.data += "&security_token="+token;
+            }
+        },
         success: function (data) {
             returnString = data;
             functioncommand(data);
@@ -73,6 +79,12 @@ function Request_syn_cb(datarequest, functioncommand) {
     jQuery.ajax({
         type: "POST",
         data: datarequest,
+        beforeSend: function(xhr, s) {
+            var token = jQuery('[name="security_token"]').val();
+            if(token){
+                s.data += "&security_token="+token;
+            }
+        },
         success: function (data) {
             returnString = data;
             functioncommand(data);
@@ -92,6 +104,12 @@ function Request_syn_url_cb(url, datarequest, functioncommand) {
         url: url,
         type: "POST",
         data: datarequest,
+        beforeSend: function(xhr, s) {
+            var token = jQuery('[name="security_token"]').val();
+            if(token){
+                s.data += "&security_token="+token;
+            }
+        },
         success: function (data) {
             returnString = data;
             functioncommand(data);
